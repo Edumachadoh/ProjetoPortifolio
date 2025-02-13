@@ -1,0 +1,8 @@
+### Login Entrar
+POST http://localhost:5104/api/login/entrar
+Content-Type: application/json
+
+{
+  "email": "eduardo@gmail.com",
+  "senha": "eduardo123"
+}

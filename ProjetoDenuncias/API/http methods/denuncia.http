@@ -1,0 +1,17 @@
+### Listar denuncia
+GET http://localhost:5104/api/denuncia/listar
+
+### Cadastrar denuncia
+POST http://localhost:5104/api/denuncia/cadastrar
+Content-Type: application/json
+
+{
+  "Nome": "Queimada senhor de 40 anos",
+  "Descricao": "Observei homem de 40 anos jogando cigarro e causando incendio na floresta",
+  "Status": 1,
+  "Rua": "Joao Goulard, 215",
+  "Bairro": "Capoeira",
+  "Cidade": "São Paulo",
+  "CategoriaDenunciaId": 1,
+  "UsuarioId": 1
+}

@@ -1,0 +1,10 @@
+### Listar denuncia
+GET http://localhost:5104/api/categoria-denuncia/listar
+
+### Cadastrar denuncia
+POST http://localhost:5104/api/categoria-denuncia/cadastrar
+Content-Type: application/json
+
+{
+  "nome": "Mata Atlântica"
+}

@@ -2,25 +2,20 @@
 using System;
 
 public class Acao {
-    public int AcaoId;
+    public int Id { get; set; }
 
-    public string? Nome;
+    public string? Nome { get; set; }
 
-    public string? Descricao;
+    public string? Descricao { get; set; }
 
-    public int CategoriaId;
+    public int CategoriaAcaoId { get; set; }
+    public CategoriaAcao? categoriaAcao { get; set; }
 
-    public CategoriaAcao categoriaAcao;
-    public int UsuarioId;
+    public int UsuarioId { get; set; }
+    public Usuario? Usuario { get; set; }
 
-    public Usuario Usuario;
-    public int DenunciaId;
+    public int DenunciaId { get; set; }
+    public Denuncia? Denuncia { get; set; }
 
-    public Denuncia Denuncia;
-
-    public string? Email;
-
-    public string? Senha;
-
-    public DateTime DataHora { get; set; }
+    public DateTime DataHora { get; set; } = DateTime.Now;
 }

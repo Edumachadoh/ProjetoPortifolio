@@ -1,0 +1,14 @@
+### Listar acao
+GET http://localhost:5104/api/acao/listar
+
+### Cadastrar acao
+POST http://localhost:5104/api/acao/cadastrar
+Content-Type: application/json
+
+{
+  "Nome": "Queimada senhor de 40 anos",
+  "Descricao": "Observei homem de 40 anos jogando cigarro e causando incendio na floresta",
+  "CategoriaAcaoId": 1,
+  "UsuarioId": 1,
+  "DenunciaId": 1
+}

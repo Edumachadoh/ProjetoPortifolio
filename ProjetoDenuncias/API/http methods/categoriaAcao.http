@@ -1,0 +1,10 @@
+### Listar categoria Acao
+GET http://localhost:5104/api/categoria-acao/listar
+
+### Cadastrar categoria Acao
+POST http://localhost:5104/api/categoria-acao/cadastrar
+Content-Type: application/json
+
+{
+  "Nome": "Gravidade Nivel 3"
+}

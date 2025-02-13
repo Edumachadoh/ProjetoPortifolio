@@ -4,15 +4,15 @@ namespace API.Models;
 
 public class Usuario
 {
-    public int UsuarioId;
+    public int Id { get; set; }
 
-    public string? Nome;
+    public string? Nome { get; set; }
 
-    public string? Cpf;
+    public string? Cpf { get; set; }
 
-    public int Tipo;
+    public int? Tipo { get; set; }
 
-    public string? Email;
+    public string? Email { get; set; }
 
-    public string? Senha;
+    public string? Senha { get; set; }
 }

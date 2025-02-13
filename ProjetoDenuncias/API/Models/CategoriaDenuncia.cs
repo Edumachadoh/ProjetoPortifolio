@@ -4,7 +4,7 @@ namespace API.Models;
 
 public class CategoriaDenuncia
 {
-    public int Id;
+    public int Id { get; set; }
 
-    public string? Nome;
+    public string? Nome { get; set; }
 }

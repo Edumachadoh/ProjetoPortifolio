@@ -1,0 +1,19 @@
+GET http://localhost:5104
+
+
+
+### Listar usuario
+GET http://localhost:5104/api/usuario/listar
+
+### Cadastrar usuario
+POST http://localhost:5104/api/usuario/cadastrar
+Content-Type: application/json
+
+{
+  "nome": "Eduardo MAchaod",
+  "cpf": "222-222-222.21",
+  "tipo": 1,
+  "email": "eduardo@gmail.com",
+  "senha": "eduardo123"
+}
+
