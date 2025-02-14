@@ -1,24 +1,23 @@
 import React from 'react';
 import "./styleLogin.css";
-import Login from "./components/Login"
-import fotoHome from "./img/foto-home.jpg";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import Login from './components/Login.tsx';
+//import fotoLogo from "./img/logoHome.jpg";
+import Home from './components/Home.tsx';
+import Cadastro from './components/Cadastro.tsx';
 
 function App() {
   return (
     <div id='app'>
-       
-
-      <div className="container">
-          <img src="/foto-home.jpg" alt="Sistema de Denúncias Ambientais" className="image"></img>
-          <div className="buttons">
-              <button className="button login">Fazer Login</button>
-              <button className="button denuncia">Fazer Denúncia</button>
-              <button className="button registros">Denúncias Registradas</button>
-          </div>
-      </div>
-
+       <BrowserRouter>
+        <Routes>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/login" element={<Login/>}></Route>
+        <Route path="/cadastro" element={<Cadastro/>}></Route>
+        </Routes>
+        </BrowserRouter>
     </div>
-  );
+  )
 }
 
 export default App;

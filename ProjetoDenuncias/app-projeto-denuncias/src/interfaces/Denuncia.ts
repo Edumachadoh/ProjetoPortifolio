@@ -1,3 +1,6 @@
+import { CategoriaDenuncia } from './CategoriaDenuncia';
+import { Usuario } from "./Usuario";
+
 export interface Denuncia{
     id?: string;
     nome: string;
