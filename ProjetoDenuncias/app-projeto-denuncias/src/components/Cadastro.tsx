@@ -2,40 +2,113 @@ import { useEffect ,useState } from 'react';
 import React from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import fotoLogo from "../img/logoHome.jpg";
+import axios from 'axios';
+import { Usuario } from '../interfaces/Usuario';
 
 function Cadastro(){
+
+  const [nome, setNome] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+
+  function cadastrarUsuario(e: any) {
+    e.preventDefault();
+
+    const usuario: Usuario = {
+      nome: nome,
+      cpf: cpf,
+      email: email,
+      senha: senha,
+      tipo: 0
+    };
+
+    fetch("http://localhost:5104/api/usuario/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(usuario),
+    })
+      .then((resposta) => {
+        return resposta.json();
+      })
+      .then((usuario) => {
+        console.log("Usuário cadastrado", usuario);
+        alert("Usuario cadastrado com sucesso!");
+      });
+  }
     
-    return <div className="login-container">
-    <button className="back-button"><Link to ="/Login" style={{ textDecoration: "none", color: 'black'}}>← Voltar</Link></button>
-    <img src={fotoLogo} alt="Sistema de Denúncias Ambientais" className="cadastro-logo" />
-    <h2>Cadastro de Usuário</h2>
-
-    <div className="input-container">
-      <label>Nome</label>
-      <input type="text" placeholder="Digite seu Nome" />
+  return (
+    <div className="login-container">
+      <button className="back-button">
+        <Link to="/Login" style={{ textDecoration: "none", color: "black" }}>
+          ← Voltar
+        </Link>
+      </button>
+      <img src={fotoLogo} alt="Sistema de Denúncias Ambientais" className="cadastro-logo" />
+  
+      <form onSubmit={cadastrarUsuario}>
+        <h2>Cadastro de Usuário</h2>
+  
+        <div className="input-container">
+          <label>Nome</label>
+          <input
+            placeholder="Digite seu Nome"
+            type="text"
+            id="nome"
+            name="nome"
+            onChange={(e: any) => setNome(e.target.value)}
+          />
+        </div>
+  
+        <div className="input-container">
+          <label>Cpf</label>
+          <input
+            placeholder="Digite seu Cpf"
+            type="text"
+            id="cpf"
+            name="cpf"
+            onChange={(e: any) => setCpf(e.target.value)}
+          />
+        </div>
+  
+        <div className="input-container">
+          <label>Email</label>
+          <input
+            placeholder="Digite seu Email"
+            type="text"
+            id="email"
+            name="email"
+            onChange={(e: any) => setEmail(e.target.value)}
+          />
+        </div>
+  
+        <div className="input-container">
+          <label>Senha</label>
+          <input
+            placeholder="Digite sua Senha"
+            type="password"
+            id="senha"
+            name="senha"
+            onChange={(e: any) => setSenha(e.target.value)}
+          />
+        </div>
+  
+        <div className="input-container">
+          <label>Repita sua senha</label>
+          <input type="password" placeholder="Digite sua Senha Novamente" />
+        </div>
+  
+  
+        <button style={{ textDecoration: "none", color: "black" }} type="submit" className="btn register">
+           
+            Cadastrar 
+          
+        </button>
+      </form>
     </div>
-
-    <div className="input-container">
-      <label>Cpf</label>
-      <input type="password" placeholder="Digite seu Cpf" />
-    </div>
-    <div className="input-container">
-      <label>Email</label>
-      <input type="password" placeholder="Digite seu E-mail" />
-    </div>
-    <div className="input-container">
-      <label>Senha</label>
-      <input type="password" placeholder="Digite sua Senha" />
-    </div>
-    <div className="input-container">
-      <label>Repita sua senha</label>
-      <input type="password" placeholder="Digite sua Senha Novamente" />
-    </div>
-
-    <a href="#" className="forgot-password">Esqueceu sua senha?</a>
-
-    <button className="btn register"><Link to ="/cadastro" style={{ textDecoration: "none", color: 'black'}}>Cadastrar</Link></button>
-  </div>
-}
+  );
+  }
 
 export default Cadastro;
