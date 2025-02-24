@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Eduardo\\OneDrive\\Área de Trabalho\\Portifólio\\ProjetoDenuncias\\API\\API.csproj": {}
+    "C:\\Users\\Eduardo\\Desktop\\Projeto Portifólio\\ProjetoPortifolio\\ProjetoDenuncias\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Eduardo\\OneDrive\\Área de Trabalho\\Portifólio\\ProjetoDenuncias\\API\\API.csproj": {
+    "C:\\Users\\Eduardo\\Desktop\\Projeto Portifólio\\ProjetoPortifolio\\ProjetoDenuncias\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eduardo\\OneDrive\\Área de Trabalho\\Portifólio\\ProjetoDenuncias\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\Eduardo\\Desktop\\Projeto Portifólio\\ProjetoPortifolio\\ProjetoDenuncias\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\Eduardo\\OneDrive\\Área de Trabalho\\Portifólio\\ProjetoDenuncias\\API\\API.csproj",
+        "projectPath": "C:\\Users\\Eduardo\\Desktop\\Projeto Portifólio\\ProjetoPortifolio\\ProjetoDenuncias\\API\\API.csproj",
         "packagesPath": "C:\\Users\\Eduardo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eduardo\\OneDrive\\Área de Trabalho\\Portifólio\\ProjetoDenuncias\\API\\obj\\",
+        "outputPath": "C:\\Users\\Eduardo\\Desktop\\Projeto Portifólio\\ProjetoPortifolio\\ProjetoDenuncias\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Eduardo\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -73,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

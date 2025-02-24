@@ -1,0 +1,14 @@
+### Listar usuario
+GET http://localhost:5104/api/usuario/listar
+
+### Cadastrar usuario
+POST http://localhost:5104/api/usuario/cadastrar
+Content-Type: application/json
+
+{
+  "Nome": "Eduardo Machado",
+  "Cpf": "09910187965",
+  "Tipo": 1,
+  "Email": "eduardo@gmail.com",
+  "Senha": "edu12345"
+}

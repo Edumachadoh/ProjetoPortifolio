@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3ZFUH/Eu1L4=",
+  "dgSpecHash": "skvMQ5YDjeI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Eduardo\\OneDrive\\Área de Trabalho\\Portifólio\\ProjetoDenuncias\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\Eduardo\\Desktop\\Projeto Portifólio\\ProjetoPortifolio\\ProjetoDenuncias\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Eduardo\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Eduardo\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
