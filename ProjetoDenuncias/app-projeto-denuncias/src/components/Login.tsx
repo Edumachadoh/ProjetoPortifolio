@@ -2,11 +2,13 @@ import { useEffect ,useState } from 'react';
 import React from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import fotoLogo from "../img/logoHome.jpg";
+import { useNavigate } from 'react-router-dom';
 
 function Login(){
   const [usuarios, setUsuarios] = useState([]);
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Simulação de uma chamada à API para buscar os usuários cadastrados
@@ -28,6 +30,8 @@ function Login(){
   
       if (usuarioEncontrado) {
         alert("Login bem-sucedido!");
+        navigate("/Denuncia");
+
       } else {
         alert("Email ou senha incorretos!");
       }

@@ -82,6 +82,7 @@ h1 {
     color:black
 }
 
+/* Container de login */
 .login-container {
     background-color: #c0dfbb;
     padding: 20px;
@@ -104,6 +105,7 @@ h2 {
     margin-bottom: 15px;
 }
 
+/* Estilização dos inputs */
 .input-container {
     display: flex;
     flex-direction: column;
@@ -111,6 +113,20 @@ h2 {
     margin-bottom: 10px;
 }
 
+label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+/* Estilização do botão voltar */
 .back-button {
     position: absolute;
     top: 10px;
@@ -127,21 +143,7 @@ h2 {
     text-decoration: underline;
 }
 
-label {
-    font-weight: bold;
-    font-size: 14px;
-}
-
-input {
-    width: 100%;
-    padding-bottom: 8px;
-    padding-top: 8px;
-    padding-left: 6px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 5px;
-}
-
+/* Estilização do link de esquecimento de senha */
 .forgot-password {
     font-size: 12px;
     color: #6b6b6b;
@@ -154,6 +156,7 @@ input {
     text-decoration: underline;
 }
 
+/* Botões de login e cadastro */
 .btn {
     width: 100%;
     padding: 10px;
@@ -185,4 +188,41 @@ input {
 .register:hover {
     background-color: #dde1dc;
     color: rgb(103, 95, 95);
+}
+
+/* Novos estilos baseados na imagem enviada */
+.input-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.input-group label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.input-group input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+/* Ajuste responsivo */
+@media (max-width: 600px) {
+    .input-row {
+        flex-direction: column;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
