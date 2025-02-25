@@ -6,5 +6,5 @@ POST http://localhost:5104/api/categoria-denuncia/cadastrar
 Content-Type: application/json
 
 {
-  "nome": "Mata Atlântica"
+  "nome": "Ocupação"
 }
