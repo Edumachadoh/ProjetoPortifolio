@@ -2,16 +2,31 @@ import { useEffect ,useState } from 'react';
 import React from "react";
 import { useLocation } from 'react-router-dom';
 import fotoLogo from "../img/logoHome.jpg";
+import { CategoriaDenuncia } from "../interfaces/CategoriaDenuncia"; 
 
 function Denuncia(){
     
     const location = useLocation();
     const email = location.state?.email || "Desconhecido";
+    const [categoriaDenunciaId, setCategoriaDenunciaId] = useState(0);
+    const [categoriaDenuncias, setCategoriaDenuncias] = useState<CategoriaDenuncia[]>([]); 
+
+    useEffect(() => {
+        fetch("http://localhost:5104/api/categoria-denuncia/listar") 
+            .then((resposta) => resposta.json())
+            .then((dados) => {
+                setCategoriaDenuncias(dados);
+                console.table(dados);
+            });
+    }, []);
+
+
+
 
     return  <div className="container">
-    <aside className="sidebar">
-        <img src={fotoLogo} alt="Logo" className="logo"/>
-        <ul>
+    <aside className="sidebar" >
+        <img src={fotoLogo} alt="Logo" className="denuncia-logo"/>
+        <ul style={{ textDecoration: "none", color: 'black', listStyle:'none'}}>
             <li><a href="#">Home</a></li>
             <li><a href="#">Denúncias registradas</a></li>
             <li><a href="#">Fazer denúncia</a></li>
@@ -21,19 +36,24 @@ function Denuncia(){
     </aside>
 
     <main className="content">
-        <h1>Registro de Denúncia</h1>
+        <h1 id='denuncia-h1'>Registro de Denúncia</h1>
         <form>
             <div className="input-group">
                 <label htmlFor="categoria">Categoria</label>
-                <select id="categoria">
-                    <option value="">Selecione</option>
-                    <option value="desmatamento">Desmatamento</option>
-                    <option value="queimada">Queimada</option>
-                    <option value="mineração">Mineração</option>
+                <select
+                    value={categoriaDenunciaId}
+                    onChange={(e) => setCategoriaDenunciaId(Number(e.target.value))}
+                    required
+                >
+                    <option value={0}>Selecione um arqueólogo</option>
+                    {categoriaDenuncias.map((categoriaDenuncia) => (
+                    <option key={categoriaDenuncia.id} value={categoriaDenuncia.id}>
+                        {categoriaDenuncia.nome}
+                    </option>
+                    ))}
                 </select>
             </div>
 
-            <div className="input-row">
                 <div className="input-group">
                     <label htmlFor="rua">Rua</label>
                     <input type="text" id="rua" placeholder="Digite a rua"/>
@@ -46,7 +66,6 @@ function Denuncia(){
                     <label htmlFor="cidade">Cidade</label>
                     <input type="text" id="cidade" placeholder="Digite a cidade"/>
                 </div>
-            </div>
 
             <div className="input-group">
                 <label htmlFor="complemento">Complemento</label>
