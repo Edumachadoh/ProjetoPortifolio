@@ -8,7 +8,7 @@ function Home(){
     
     return <div>
        <main>
-        <div className="container">
+        <div className="container-login">
             <h1>Sistema De Denúncias<br></br>Ambientais(SDA)</h1>
             <img src={fotoLogo}  alt="Sistema de Denúncias Ambientais" className="image"></img>
             <div className="buttons">
