@@ -5,6 +5,7 @@ import Login from './components/Login.tsx';
 import Home from './components/Home.tsx';
 import Cadastro from './components/Cadastro.tsx';
 import Denuncia from './components/FazerDenuncia.tsx';
+import DenunciaListar from './components/ListarDenuncia.tsx';
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
         <Route path="/" element={<Home/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/cadastro" element={<Cadastro/>}></Route>
-        <Route path="/Denuncia" element={<Denuncia/>}></Route>
+        <Route path="/denuncia" element={<Denuncia/>}></Route>
+        <Route path="/denuncia-listar" element={<DenunciaListar/>}></Route>
         </Routes>
         </BrowserRouter>
     </div>

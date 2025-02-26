@@ -1,6 +1,6 @@
 import { useEffect ,useState } from 'react';
 import React from "react";
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import fotoLogo from "../img/logoHome.jpg";
 import { CategoriaDenuncia } from "../interfaces/CategoriaDenuncia"; 
 import { Denuncia } from '../interfaces/Denuncia';
@@ -61,9 +61,27 @@ function FazerDenuncia(){
     <aside className="sidebar" >
         <img src={fotoLogo} alt="Logo" className="denuncia-logo"/>
         <ul style={{ textDecoration: "none", color: 'black', listStyle:'none'}}>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Denúncias registradas</a></li>
-            <li><a href="#">Fazer denúncia</a></li>
+            <li>
+            <a href="#">
+                <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+                Home
+                </Link>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                <Link to="/denuncia-listar" style={{ textDecoration: "none", color: "black" }}>
+                Denúncias registradas
+                </Link>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                <Link to="/denuncia" style={{ textDecoration: "none", color: "black" }}>
+                Fazer Denúncia
+                </Link>
+                </a>
+            </li>
             <li><a href="#">Análise de ocorrências</a></li>
             <li><a href="#">Contato</a></li>
         </ul>

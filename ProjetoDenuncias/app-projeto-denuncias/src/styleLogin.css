@@ -15,7 +15,7 @@ body {
     justify-content: space-between;
     align-items: stretch;
     width: 90%;
-    height: 90%;
+    height: 80vh;
     margin: auto;
 }
 
@@ -51,7 +51,7 @@ body {
 
 /* Conteúdo à direita */
 .content {
-    width: 500px;
+    width: 850px;
     flex: 1;
     padding: 30px;
     background: white;
@@ -274,6 +274,41 @@ input {
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-top: 5px;
+}
+
+
+
+table {
+    border-collapse: collapse;
+    font-family: 'Arial', sans-serif;
+    font-size: 0.8em;
+}
+
+/* Estilo para cabeçalhos da tabela */
+th {
+    background-color: #81b15c;
+    color: white;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+/* Estilo para células de dados */
+td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black;
+    background-color: #f2f2f2;
+}
+
+/* Alternar cores de fundo para as linhas da tabela */
+tr:nth-child() {
+    background-color: #f2f2f2;
+}
+
+/* Hover effect para linhas da tabela */
+tr:hover {
+    background-color: #dcdcdc;
+    transition: background-color 0.2s ease-in;
 }
 
 /* Ajuste responsivo */
