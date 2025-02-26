@@ -6,6 +6,7 @@ import Home from './components/Home.tsx';
 import Cadastro from './components/Cadastro.tsx';
 import Denuncia from './components/FazerDenuncia.tsx';
 import DenunciaListar from './components/ListarDenuncia.tsx';
+import DenunciaAnalisar from './components/AnalisarDenuncia.tsx';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/cadastro" element={<Cadastro/>}></Route>
         <Route path="/denuncia" element={<Denuncia/>}></Route>
         <Route path="/denuncia-listar" element={<DenunciaListar/>}></Route>
+        <Route path="/denuncia-analisar" element={<DenunciaAnalisar/>}></Route>
         </Routes>
         </BrowserRouter>
     </div>

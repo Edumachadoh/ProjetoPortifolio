@@ -44,7 +44,11 @@ function ListarDenuncia(){
                 </Link>
                 </a>
             </li>
-            <li><a href="#">Análise de ocorrências</a></li>
+            <li><a href="#">
+                            <Link to="/denuncia-analisar" style={{ textDecoration: "none", color: "black" }}>
+                            Analisar Ocorrência
+                            </Link>
+                            </a></li>
             <li><a href="#">Contato</a></li>
         </ul>
     </aside>
