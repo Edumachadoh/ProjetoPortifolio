@@ -16,6 +16,62 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+
+//GET: /api/denuncias-analise/
+app.MapGet("/api/denuncias-analise", ([FromServices] AppDataContext ctx) => 
+{
+
+    int contTotalDenuncia = ctx.Denuncias.Count();
+    int contTotalUsuarios = ctx.Usuarios.Count();
+
+    //  Contando cidades únicas
+    int contTotalCidade = ctx.Denuncias.Select(d => d.Cidade).Distinct().Count(); 
+
+    //  Contando bairros únicas
+    int contTotalBairro = ctx.Denuncias.Select(d => d.Bairro).Distinct().Count(); 
+
+    // Contagem de denúncias por categoria
+    Dictionary<int, int> categoriasDenuncias = new Dictionary<int, int>();
+
+    // Inicializa o dicionário com valores zerados para categorias de 1 a 7
+    for (int i = 1; i <= 7; i++)
+    {
+        categoriasDenuncias[i] = 0;
+    }
+
+    // Percorre todas as denúncias e conta quantas vezes cada categoria aparece
+    foreach (var denuncia in ctx.Denuncias)
+    {
+        if (denuncia.CategoriaDenuncia != null) // Garante que não é nulo
+        {
+            int categoriaId = denuncia.CategoriaDenuncia.Id; // Acessa o ID da categoria
+
+            if (categoriasDenuncias.ContainsKey(categoriaId))
+            {
+                categoriasDenuncias[categoriaId]++;
+            }
+        }
+    }
+
+    var resultado = new
+    {
+        contTotalDenuncia,
+        contTotalUsuarios,
+        contTotalCidade,
+        contTotalBairro,
+        // contCategoriaDenuncia1,
+        // contCategoriaDenuncia2,
+        // contCategoriaDenuncia3,
+        // contCategoriaDenuncia4,
+        // contCategoriaDenuncia5,
+        // contCategoriaDenuncia6,
+        // contCategoriaDenuncia7,
+    };
+
+    return Results.Ok(resultado);
+});
+
+
 //GET: /api/acao/listar/
 app.MapGet("/api/acao/listar", ([FromServices] AppDataContext ctx) => 
 {
