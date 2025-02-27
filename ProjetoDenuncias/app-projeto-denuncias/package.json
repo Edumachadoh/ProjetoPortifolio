@@ -5,12 +5,14 @@
   "dependencies": {
     "@types/axios": "^0.14.4",
     "@types/react-router-dom": "^5.3.3",
+    "apexcharts": "^4.5.0",
     "axios": "^1.7.9",
     "cra-template-typescript": "1.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.5",
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "recharts": "^2.15.1"
   },
   "scripts": {
     "start": "react-scripts start",

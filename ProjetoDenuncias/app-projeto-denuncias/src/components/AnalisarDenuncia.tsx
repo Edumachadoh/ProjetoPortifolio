@@ -4,14 +4,18 @@ import { Link, useLocation } from 'react-router-dom';
 import fotoLogo from "../img/logoHome.jpg";
 import { CategoriaDenuncia } from "../interfaces/CategoriaDenuncia"; 
 import { Denuncia } from '../interfaces/Denuncia';
+import ApexCharts from 'apexcharts';
+
 
 function DenunciaAnalisar(){
     
-    const [relatorioDenuncias, setRelatorioDenuncias] = useState<Denuncia[]>([]);
+    const [relatorioDenuncias, setRelatorioDenuncias] = useState<Relatorio | null>(null); // Tipo explícito
 
     type Relatorio = {
         contTotalDenuncia: number;
-        contTotalPessoas: number;
+        contTotalUsuarios: number;
+        contTotalCidade: number;
+        contTotalBairro: number;
         contCategoriaDenuncia1: number;
         contCategoriaDenuncia2: number;
         contCategoriaDenuncia3: number;
@@ -19,8 +23,6 @@ function DenunciaAnalisar(){
         contCategoriaDenuncia5: number;
         contCategoriaDenuncia6: number;
         contCategoriaDenuncia7: number;
-        contTotalCidade: number;
-        contTotalBairro: number;
       };
 
 
@@ -29,8 +31,8 @@ function DenunciaAnalisar(){
             .then(resposta => {
                 return resposta.json();
             }) 
-            .then(arqueologo => {
-                setRelatorioDenuncias(arqueologo);
+            .then(relatorio => {
+                setRelatorioDenuncias(relatorio);
             });
         });
 
@@ -72,7 +74,45 @@ function DenunciaAnalisar(){
 
     <main className="content">
         <h1 id='denuncia-h1'>Análise de ocorrências</h1>
-        
+        <table>
+  <thead>
+    <tr>
+      <th>Total de Denúncias</th>
+      <th>Total de Usuários</th>
+      <th>Total de Cidades</th>
+      <th>Total de Bairros</th>
+      <th>Categoria 1 - Mata Atlântica</th>
+      <th>Categoria 2 - Agropecuária</th>
+      <th>Categoria 3 - Área Florestal</th>
+      <th>Categoria 4 - Construção</th>
+      <th>Categoria 5 - Poluição</th>
+      <th>Categoria 6 - Contaminação</th>
+      <th>Categoria 7 - Ocupação</th>
+    </tr>
+  </thead>
+  <tbody>
+    {relatorioDenuncias ? (
+      <tr>
+        <td>{relatorioDenuncias.contTotalDenuncia ?? 0}</td>
+        <td>{relatorioDenuncias.contTotalUsuarios ?? 0}</td>
+        <td>{relatorioDenuncias.contTotalCidade ?? 0}</td>
+        <td>{relatorioDenuncias.contTotalBairro ?? 0}</td>
+        <td>{relatorioDenuncias.contCategoriaDenuncia1 ?? 0}</td>
+        <td>{relatorioDenuncias.contCategoriaDenuncia2 ?? 0}</td>
+        <td>{relatorioDenuncias.contCategoriaDenuncia3 ?? 0}</td>
+        <td>{relatorioDenuncias.contCategoriaDenuncia4 ?? 0}</td>
+        <td>{relatorioDenuncias.contCategoriaDenuncia5 ?? 0}</td>
+        <td>{relatorioDenuncias.contCategoriaDenuncia6 ?? 0}</td>
+        <td>{relatorioDenuncias.contCategoriaDenuncia7 ?? 0}</td>
+      </tr>
+    ) : (
+      <tr>
+        <td colSpan={11}>Carregando dados...</td>
+      </tr>
+    )}
+  </tbody>
+  
+</table>
     </main>
 </div>
 }
