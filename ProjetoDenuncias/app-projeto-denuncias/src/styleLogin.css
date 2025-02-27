@@ -310,6 +310,80 @@ tr:hover {
     background-color: #dcdcdc;
     transition: background-color 0.2s ease-in;
 }
+/* pagina de contato css */
+.contato-container {
+    display: flex;
+    background: white;
+    padding: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    justify-content: space-between;
+}
+
+.formulario {
+    padding: 20px;
+    width: 300px;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+.termos {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+
+.termos input {
+    margin-right: 5px;
+}
+
+button {
+    background-color: #4c6ef5;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3b5bdb;
+}
+
+.informacoes {
+    background: #f2f2f2;
+    padding: 20px;
+    width: 250px;
+    border-radius: 10px;
+}
+
+h3 {
+    color: #3b5bdb;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+p {
+    font-size: 14px;
+}
+
 
 /* Ajuste responsivo */
 @media (max-width: 600px) {

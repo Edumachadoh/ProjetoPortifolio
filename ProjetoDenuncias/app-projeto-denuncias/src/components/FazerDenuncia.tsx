@@ -89,7 +89,13 @@ function FazerDenuncia(){
                     </Link>
                 </a>
             </li>
-            <li><a href="#">Contato</a></li>
+            <li>
+                        <a href="#">
+                            <Link to="/contato" style={{ textDecoration: "none", color: "black" }}>
+                            Contato
+                            </Link>
+                            </a>
+                        </li>
         </ul>
     </aside>
 
