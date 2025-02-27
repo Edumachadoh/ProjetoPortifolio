@@ -30,42 +30,41 @@ app.MapGet("/api/denuncias-analise", ([FromServices] AppDataContext ctx) =>
     //  Contando bairros únicas
     int contTotalBairro = ctx.Denuncias.Select(d => d.Bairro).Distinct().Count(); 
 
-    // Contagem de denúncias por categoria
-    Dictionary<int, int> categoriasDenuncias = new Dictionary<int, int>();
+    int contCategoriaDenuncia1 = 0;
+    int contCategoriaDenuncia2 = 0;
+    int contCategoriaDenuncia3 = 0;
+    int contCategoriaDenuncia4 = 0;
+    int contCategoriaDenuncia5 = 0;
+    int contCategoriaDenuncia6 = 0;
+    int contCategoriaDenuncia7 = 0;
 
-    // Inicializa o dicionário com valores zerados para categorias de 1 a 7
-    for (int i = 1; i <= 7; i++)
-    {
-        categoriasDenuncias[i] = 0;
-    }
-
-    // Percorre todas as denúncias e conta quantas vezes cada categoria aparece
     foreach (var denuncia in ctx.Denuncias)
     {
-        if (denuncia.CategoriaDenuncia != null) // Garante que não é nulo
-        {
-            int categoriaId = denuncia.CategoriaDenuncia.Id; // Acessa o ID da categoria
+        
+            int categoriaId = denuncia.CategoriaDenunciaId; // Obtém o ID da categoria
 
-            if (categoriasDenuncias.ContainsKey(categoriaId))
-            {
-                categoriasDenuncias[categoriaId]++;
-            }
-        }
+            if (categoriaId == 1) contCategoriaDenuncia1++;
+            if (categoriaId == 2) contCategoriaDenuncia2++;
+            if (categoriaId == 3) contCategoriaDenuncia3++;
+            if (categoriaId == 4) contCategoriaDenuncia4++;
+            if (categoriaId == 5) contCategoriaDenuncia5++;
+            if (categoriaId == 6) contCategoriaDenuncia6++;
+            if (categoriaId == 7) contCategoriaDenuncia7++;
+        
     }
-
     var resultado = new
     {
         contTotalDenuncia,
         contTotalUsuarios,
         contTotalCidade,
         contTotalBairro,
-        // contCategoriaDenuncia1,
-        // contCategoriaDenuncia2,
-        // contCategoriaDenuncia3,
-        // contCategoriaDenuncia4,
-        // contCategoriaDenuncia5,
-        // contCategoriaDenuncia6,
-        // contCategoriaDenuncia7,
+        contCategoriaDenuncia1,
+        contCategoriaDenuncia2,
+        contCategoriaDenuncia3,
+        contCategoriaDenuncia4,
+        contCategoriaDenuncia5,
+        contCategoriaDenuncia6,
+        contCategoriaDenuncia7,
     };
 
     return Results.Ok(resultado);
