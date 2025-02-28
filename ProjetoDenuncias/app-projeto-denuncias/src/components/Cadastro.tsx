@@ -23,21 +23,54 @@ function Cadastro(){
       tipo: 0
     };
 
-    fetch("http://localhost:5104/api/usuario/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(usuario),
-    })
-      .then((resposta) => {
-        return resposta.json();
-      })
-      .then((usuario) => {
-        console.log("Usuário cadastrado", usuario);
-        alert("Usuario cadastrado com sucesso!");
-      });
+    var validacaoEmail = false;
+    var validacaoNome = false;
+    var validacaoCpf = false;
+    var validacaoSenha = false;
+
+    if (nome == '') {
+      alert('O nome do usuário é obrigatório')
+  } else {
+    validacaoNome = true;
   }
+
+  if (cpf == '') {
+    alert('O cpf é obrigatório')
+} else {
+  validacaoCpf = true;
+}
+
+  if (email == '') {
+    alert('O e-mail é obrigatório')
+    validacaoEmail = false;
+} else {
+  validacaoEmail = true;
+}
+
+if (senha == '') {
+  alert('A senha é obrigatória')
+} else {
+  validacaoSenha = true;
+}
+
+if (validacaoSenha && validacaoCpf && validacaoNome && validacaoEmail) {
+  fetch("http://localhost:5104/api/usuario/cadastrar", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(usuario),
+  })
+    .then((resposta) => {
+      return resposta.json();
+    })
+    .then((usuario) => {
+      console.log("Usuário cadastrado", usuario);
+      alert("Usuario cadastrado com sucesso!");
+    });
+
+  }
+}
     
   return (
     <div className="login-container">

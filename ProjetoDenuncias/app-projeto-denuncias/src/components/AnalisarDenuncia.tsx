@@ -145,12 +145,12 @@ function DenunciaAnalisar(){
         <div className="container-graficos">
             <div className="grafico" id="chart1">
             </div>
-            <div className="grafico graficomenor" id="chart2">
+            {/* <div className="grafico graficomenor" id="chart2">
 
             </div>
             <div className="grafico graficomenor" id="chart3">
 
-            </div>
+            </div> */}
             {/* <div className="grafico" id="chart4">
 
             </div> */}
