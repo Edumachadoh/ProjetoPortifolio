@@ -10,6 +10,8 @@ import ApexCharts from 'apexcharts';
 function DenunciaAnalisar(){
     
     const [relatorioDenuncias, setRelatorioDenuncias] = useState<Relatorio | null>(null); // Tipo explícito
+  
+    
 
     type Relatorio = {
         contTotalDenuncia: number;
@@ -23,18 +25,76 @@ function DenunciaAnalisar(){
         contCategoriaDenuncia5: number;
         contCategoriaDenuncia6: number;
         contCategoriaDenuncia7: number;
+        // armazenar minimo valor de data e maximo para fazer um grafico ao longo do tempo
       };
 
+      useEffect(() => {
+        fetch("http://localhost:5104/api/denuncias-analise")
+          .then((res) => res.json())
+          .then((data) => setRelatorioDenuncias(data))
+          .catch((error) => console.error("Erro ao buscar dados:", error));
+      }, []); // Executa apenas uma vez ao montar o componente
 
       useEffect(() => {
-        fetch("http://localhost:5104/api/denuncias-analise") 
-            .then(resposta => {
-                return resposta.json();
-            }) 
-            .then(relatorio => {
-                setRelatorioDenuncias(relatorio);
-            });
-        });
+        if (relatorioDenuncias) {
+          var options = {
+            chart: {
+              type: 'bar',
+              id: 'grafico-denuncias' // ID único para o gráfico
+            },
+            series: [{
+              name: 'Denúncias',
+              data: [
+                relatorioDenuncias?.contCategoriaDenuncia1 || 0,
+                relatorioDenuncias?.contCategoriaDenuncia2 || 0,
+                relatorioDenuncias?.contCategoriaDenuncia3 || 0,
+                relatorioDenuncias?.contCategoriaDenuncia4 || 0,
+                relatorioDenuncias?.contCategoriaDenuncia5 || 0,
+                relatorioDenuncias?.contCategoriaDenuncia6 || 0,
+                relatorioDenuncias?.contCategoriaDenuncia7 || 0
+              ]
+            }],
+            xaxis: {
+              categories: [
+                'Mata Atlântica', 'Agropecuária', 'Área Florestal', 
+                'Construção', 'Poluição', 'Contaminação', 'Ocupação'
+              ],
+              title: {
+                text: 'Categorias de Denúncias', // Legenda do eixo X
+                style: {
+                  fontSize: '14px',
+                  fontWeight: 'bold'
+                }
+              }
+            },
+            yaxis: {
+              title: {
+                text: 'Número de Denúncias', // Legenda do eixo Y
+                style: {
+                  fontSize: '14px',
+                  fontWeight: 'bold'
+                }
+              }
+            }
+          };
+        
+      
+          // Remove gráfico antigo antes de criar um novo
+          const chartContainer = document.querySelector("#chart1");
+          if (chartContainer) {
+            chartContainer.innerHTML = ""; // Remove qualquer gráfico anterior
+          }
+      
+          var chart = new ApexCharts(chartContainer, options);
+          chart.render();
+      
+          // Cleanup: destrói o gráfico quando o componente desmontar ou os dados mudarem
+          return () => {
+            chart.destroy();
+          };
+        }
+      }, [relatorioDenuncias]);
+      
 
     return  <div className="container">
     <aside className="sidebar" >
@@ -78,49 +138,33 @@ function DenunciaAnalisar(){
         </ul>
     </aside>
 
-    <main className="content">
+    <main className="content ">
         <h1 id='denuncia-h1'>Análise de ocorrências</h1>
-        <table>
-  <thead>
-    <tr>
-      <th>Total de Denúncias</th>
-      <th>Total de Usuários</th>
-      <th>Total de Cidades</th>
-      <th>Total de Bairros</th>
-      <th>Categoria 1 - Mata Atlântica</th>
-      <th>Categoria 2 - Agropecuária</th>
-      <th>Categoria 3 - Área Florestal</th>
-      <th>Categoria 4 - Construção</th>
-      <th>Categoria 5 - Poluição</th>
-      <th>Categoria 6 - Contaminação</th>
-      <th>Categoria 7 - Ocupação</th>
-    </tr>
-  </thead>
-  <tbody>
-    {relatorioDenuncias ? (
-      <tr>
-        <td>{relatorioDenuncias.contTotalDenuncia ?? 0}</td>
-        <td>{relatorioDenuncias.contTotalUsuarios ?? 0}</td>
-        <td>{relatorioDenuncias.contTotalCidade ?? 0}</td>
-        <td>{relatorioDenuncias.contTotalBairro ?? 0}</td>
-        <td>{relatorioDenuncias.contCategoriaDenuncia1 ?? 0}</td>
-        <td>{relatorioDenuncias.contCategoriaDenuncia2 ?? 0}</td>
-        <td>{relatorioDenuncias.contCategoriaDenuncia3 ?? 0}</td>
-        <td>{relatorioDenuncias.contCategoriaDenuncia4 ?? 0}</td>
-        <td>{relatorioDenuncias.contCategoriaDenuncia5 ?? 0}</td>
-        <td>{relatorioDenuncias.contCategoriaDenuncia6 ?? 0}</td>
-        <td>{relatorioDenuncias.contCategoriaDenuncia7 ?? 0}</td>
-      </tr>
-    ) : (
-      <tr>
-        <td colSpan={11}>Carregando dados...</td>
-      </tr>
-    )}
-  </tbody>
-  
-</table>
+       
+
+        <div className="container-graficos">
+            <div className="grafico" id="chart1">
+            </div>
+            <div className="grafico graficomenor" id="chart2">
+
+            </div>
+            <div className="grafico graficomenor" id="chart3">
+
+            </div>
+            {/* <div className="grafico" id="chart4">
+
+            </div> */}
+        </div>
+      
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-apexcharts"></script>
 </div>
+
+
 }
+
+
 
 export default DenunciaAnalisar;

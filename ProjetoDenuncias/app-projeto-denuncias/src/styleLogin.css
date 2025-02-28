@@ -384,6 +384,31 @@ p {
     font-size: 14px;
 }
 
+/* graficos */
+.container-graficos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    height: 100vh;
+}
+
+.grafico {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 300px;
+    min-height: 300px;
+}
+.graficomenor {
+    width: 10%;
+    height: 5vh;
+}
 
 /* Ajuste responsivo */
 @media (max-width: 600px) {
