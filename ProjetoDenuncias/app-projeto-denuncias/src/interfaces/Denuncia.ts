@@ -10,6 +10,7 @@ export interface Denuncia{
     bairro: string;
     cidade: string;
     categoriaDenunciaId: number;
+    categoriaDenuncia?: CategoriaDenuncia;
     usuarioId: number;
     dataHora?: Date
 }

@@ -333,7 +333,7 @@ label {
 input, textarea {
     width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 4px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
@@ -409,6 +409,14 @@ p {
     width: 10%;
     height: 5vh;
 }
+
+/* error message */
+.error {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+  }
+
 
 /* Ajuste responsivo */
 @media (max-width: 600px) {

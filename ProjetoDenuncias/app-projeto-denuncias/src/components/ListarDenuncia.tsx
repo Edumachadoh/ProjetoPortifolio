@@ -69,7 +69,6 @@ function ListarDenuncia(){
                 <th>Rua</th>
                 <th>Bairro</th>
                 <th>Cidade</th>
-                <th>Status</th>
                 <th>Categoria denúncia</th>
                 <th>Hora</th>
                 <th>Data</th>
@@ -83,8 +82,7 @@ function ListarDenuncia(){
                     <td>{denuncia.rua}</td>
                     <td>{denuncia.bairro}</td>
                     <td>{denuncia.cidade}</td>
-                    <td>{denuncia.status}</td>
-                    <td>{denuncia.categoriaDenunciaId}</td>
+                    <td>{denuncia.categoriaDenuncia?.nome}</td>
                     <td>
         {denuncia.dataHora
             ? new Date(denuncia.dataHora).toLocaleTimeString("pt-BR", {
