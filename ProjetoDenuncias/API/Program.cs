@@ -1,5 +1,6 @@
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDataContext>();
@@ -107,8 +108,9 @@ app.MapGet("/api/denuncia/listar", ([FromServices] AppDataContext ctx) =>
 {
     if (ctx.Denuncias.Any())
     {
-        return Results.Ok(ctx.Denuncias.ToList());
+        return Results.Ok(ctx.Denuncias.Include(x => x.CategoriaDenuncia).ToList());
     }
+
     return Results.NotFound();
 });
 
@@ -118,10 +120,12 @@ app.MapPost("/api/denuncia/cadastrar", ([FromBody] Denuncia denuncia, [FromServi
 
     Usuario? usuario = ctx.Usuarios.Find(denuncia.UsuarioId);
     CategoriaDenuncia? categoriaDenuncia = ctx.CategoriaDenuncias.Find(denuncia.CategoriaDenunciaId);
-    if (denuncia is null)
+    
+    if (categoriaDenuncia is null)
     {
         return Results.NotFound();
     }
+
     denuncia.Usuario = usuario;
     denuncia.CategoriaDenuncia = categoriaDenuncia;
 
