@@ -1,46 +1,97 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Utilização
+### Lugar hospedado
+A hospedagem do site é feita no `Versel` que é uma plataforma para os desenvolvedores hospedar seus websites e essa hospedagem é feita na nuvem da plataforma.
+## Como rodar
+### Backend
+```bash
 
-## Available Scripts
 
-In the project directory, you can run:
+	# Entre na pasta da api “API”
+	cd API
 
-### `npm start`
+	# Rodar a API
+	dotnet run
+```
+### Front-end
+```bash
+	# Entre na pasta do projeto “app-projeto-denuncias” 
+	cd app-projeto-denuncias
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    # Instalar as dependências
+	npm i
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+    # Rodar o projeto
+	npm start
+```
 
-### `npm test`
+# Backend
+### Linguagem utilizada
+Para o backend, utilizei o `C#`.
+### Framework utilizado
+Como sistema de gerenciamento de banco de dados utilizei o `SQLite` juntamente com a biblioteca `Microsoft.EntityFrameworkCore.Sqlite`. Isso permitiu a integração do SQLite com EF Core, facilitando a manipulação de dados sem escrever SQL diretamente. O SQLite é útil para aplicações leves e portáteis, como apps desktop e mobile 
+### Exemplos de models
+As principais classes models são… 
+#### Usuario:
+``` json
+{
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    "id": 1,
+    "nome": "Eduardo MAchaod",
+    "cpf": "222-222-222.21",
+    "tipo": 1,
+    "email": "eduardo@gmail.com",
+    "senha": "eduardo123"
+  },
+  {
+```
+#### Denuncia:
+{
+``` json
+    "id": 1,
+    "nome": "Queimada senhor de 40 anos",
+    "descricao": "Observei homem de 40 anos jogando cigarro e causando incendio na floresta",
+    "status": 1,
+    "rua": "Joao Goulard, 215",
+    "bairro": "Capoeira",
+    "cidade": "São Paulo",
+    "dataHora": "0001-01-01T00:00:00",
+    "categoriaDenunciaId": 1,
+    "categoriaDenuncia": null,
+    "usuarioId": 1,
+    "usuario": null
+  },
+```
 
-### `npm run build`
+### Dar um exemplo de logs
+(em breve)
+### Testes
+(em breve)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Front-end
+### Linguagem utilizada
+As linguagens que eu escolhi foram o `JavaScript` e o `TypeScript`.
+### Bibliotecas utilizadas
+A biblioteca utilizada foi o `React`, ele adota uma abordagem baseada em componentes reutilizáveis, permitindo o desenvolvimento modular e organizado. Foi utilizado ferramentas também como React Router para navegação e ApexCharts para elaboração de gráficos.
+### Responsividade
+(em breve)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Funcionalidades
+### Objetivo do projeto
+O projeto consiste em um sistema no qual o usuário comum realiza uma denúncia de desmatamento ambiental. Existe também outro usuário, o usuário Administrador que tem acesso às denúncias dos usuários, e então pode mudar o status da ação que será feita sobre ela e também ele tem um painel com gráficos dos dados das denúncias que o auxiliam na tomada de decisão desse gestor.
+### Funcionalidades:
+- [  ] Login inicial para o usuário entrar no sistema
+- [x] Cadastro de usuário
+- [x] Usuário faz um cadastro solicitando suas informações.
+- [  ] Verificação de login
+- [x] Verificar login do usuário
+- [  ] Esquecimento de senha (em breve)
+- [  ] Usuário pode recuperar seu login por meio de recebimento de email
+- [x] Analise de dados
+- [  ] Painel para o gestor analisar as informações e dados sobre denúncias e usuários.
+- [ ] Extração de dados do painel de análise de dados.
+- [  ] Crud de denuncia
+- [x] O usuário pode cadastrar uma denúncia 
+- [  ] gestor pode deletar, editar e ler denúncias.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
