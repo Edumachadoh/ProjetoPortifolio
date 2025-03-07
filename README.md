@@ -46,8 +46,9 @@ As principais classes models são…
   {
 ```
 #### Denuncia:
-{
 ``` json
+{
+
     "id": 1,
     "nome": "Queimada senhor de 40 anos",
     "descricao": "Observei homem de 40 anos jogando cigarro e causando incendio na floresta",
@@ -61,6 +62,7 @@ As principais classes models são…
     "usuarioId": 1,
     "usuario": null
   },
+}
 ```
 
 ### Dar um exemplo de logs
@@ -80,18 +82,18 @@ A biblioteca utilizada foi o `React`, ele adota uma abordagem baseada em compone
 ### Objetivo do projeto
 O projeto consiste em um sistema no qual o usuário comum realiza uma denúncia de desmatamento ambiental. Existe também outro usuário, o usuário Administrador que tem acesso às denúncias dos usuários, e então pode mudar o status da ação que será feita sobre ela e também ele tem um painel com gráficos dos dados das denúncias que o auxiliam na tomada de decisão desse gestor.
 ### Funcionalidades:
-- [  ] Login inicial para o usuário entrar no sistema
+- [ ] Login inicial para o usuário entrar no sistema
 - [x] Cadastro de usuário
 - [x] Usuário faz um cadastro solicitando suas informações.
-- [  ] Verificação de login
+- [ ] Verificação de login
 - [x] Verificar login do usuário
-- [  ] Esquecimento de senha (em breve)
-- [  ] Usuário pode recuperar seu login por meio de recebimento de email
+- [ ] Esquecimento de senha (em breve)
+- [ ] Usuário pode recuperar seu login por meio de recebimento de email
 - [x] Analise de dados
-- [  ] Painel para o gestor analisar as informações e dados sobre denúncias e usuários.
+- [ ] Painel para o gestor analisar as informações e dados sobre denúncias e usuários.
 - [ ] Extração de dados do painel de análise de dados.
-- [  ] Crud de denuncia
+- [ ] Crud de denuncia
 - [x] O usuário pode cadastrar uma denúncia 
-- [  ] gestor pode deletar, editar e ler denúncias.
+- [ ] gestor pode deletar, editar e ler denúncias.
 
 
