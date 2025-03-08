@@ -1,12 +1,12 @@
 import { useEffect ,useState } from 'react';
 import React from "react";
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import fotoLogo from "../img/logoHome.jpg";
 import { CategoriaDenuncia } from "../interfaces/CategoriaDenuncia"; 
 import { Denuncia } from '../interfaces/Denuncia';
 
 function FazerDenuncia(){
-    
+    const navigate = useNavigate();
     const [categoriaDenunciaId, setCategoriaDenunciaId] = useState(0);
     const [categoriaDenuncias, setCategoriaDenuncias] = useState<CategoriaDenuncia[]>([]); 
     const [nome, setNome] = useState("");
@@ -15,6 +15,15 @@ function FazerDenuncia(){
     const [cidade, setCidade] = useState("");
     const [descricao, setDescricao] = useState("");
 
+
+    useEffect(() => {
+        const usuarioLogado = localStorage.getItem("usuarioLogado"); // Pega do localStorage
+        console.log("Usuario logado:" + usuarioLogado)
+
+        if (!usuarioLogado) {
+          navigate("/login"); // Se não estiver logado, redireciona para login
+        }
+      }, []);
 
     useEffect(() => {
         fetch("http://localhost:5104/api/categoria-denuncia/listar") 

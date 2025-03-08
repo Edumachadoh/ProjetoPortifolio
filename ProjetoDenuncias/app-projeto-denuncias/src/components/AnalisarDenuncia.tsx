@@ -81,19 +81,49 @@ function DenunciaAnalisar(){
       
           // Remove gráfico antigo antes de criar um novo
           const chartContainer = document.querySelector("#chart1");
-          if (chartContainer) {
-            chartContainer.innerHTML = ""; // Remove qualquer gráfico anterior
-          }
+      if (chartContainer) {
+        chartContainer.innerHTML = "";
+      }
+
+      var chart = new ApexCharts(chartContainer, options);
+      chart.render();
+
+      // Atualizar os elementos de texto nos gráficos menores
+      const chart2 = document.querySelector("#chart2");
+      const chart3 = document.querySelector("#chart3");
+      const chart4 = document.querySelector("#chart4");
+
+      if (chart2) {
+        chart2.innerHTML = `
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <h2 style="margin: 0; font-size: 24px;">${relatorioDenuncias.contTotalDenuncia}</h2>
+            <p style="margin: 0; font-size: 14px;">Total de Denúncias</p>
+          </div>
+        `;
+      }
       
-          var chart = new ApexCharts(chartContainer, options);
-          chart.render();
-      
-          // Cleanup: destrói o gráfico quando o componente desmontar ou os dados mudarem
-          return () => {
-            chart.destroy();
-          };
-        }
-      }, [relatorioDenuncias]);
+      if (chart3) {
+        chart3.innerHTML = `
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <h2 style="margin: 0; font-size: 24px;">${relatorioDenuncias.contTotalUsuarios}</h2>
+            <p style="margin: 0; font-size: 14px;">Total de Usuários</p>
+          </div>
+        `;
+      }
+      if (chart4) {
+        chart4.innerHTML = `
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <h2 style="margin: 0; font-size: 24px;">${relatorioDenuncias.contTotalCidade}</h2>
+            <p style="margin: 0; font-size: 14px;">Total de Cidades</p>
+          </div>
+        `;
+      }
+
+      return () => {
+        chart.destroy();
+      };
+    }
+  }, [relatorioDenuncias]);
       
 
     return  <div className="container">
@@ -143,17 +173,18 @@ function DenunciaAnalisar(){
        
 
         <div className="container-graficos">
-            <div className="grafico" id="chart1">
-            </div>
-            {/* <div className="grafico graficomenor" id="chart2">
+           
+            <div className="grafico graficomenor" id="chart2">
 
             </div>
             <div className="grafico graficomenor" id="chart3">
 
-            </div> */}
-            {/* <div className="grafico" id="chart4">
+            </div> 
+            <div className="grafico graficomenor" id="chart4">
 
-            </div> */}
+            </div> 
+            <div className="grafico" id="chart1">
+            </div>
         </div>
       
     </main>

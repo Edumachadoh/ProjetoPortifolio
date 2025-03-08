@@ -402,12 +402,10 @@ p {
     align-items: center;
     justify-content: center;
     width: 100%;
-    min-width: 300px;
-    min-height: 300px;
 }
 .graficomenor {
-    width: 10%;
-    height: 5vh;
+    width: 30%;
+    height: 100px;
 }
 
 /* error message */

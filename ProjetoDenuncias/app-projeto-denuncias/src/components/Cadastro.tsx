@@ -19,6 +19,9 @@ function Cadastro() {
     repetirSenha: "",
   });
 
+  
+
+
   function cadastrarUsuario(e: any) {
     e.preventDefault();
 

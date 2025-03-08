@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import fotoLogo from "../img/logoHome.jpg";
 import { useNavigate } from 'react-router-dom';
+import emailjs from '@emailjs/browser';
 
 function Login(){
   const [usuarios, setUsuarios] = useState([]);
@@ -18,24 +19,67 @@ function Login(){
       .catch((error) => console.error("Erro ao buscar usuários:", error));
   }, []);
 
-    function verificarCadastro() {
-      let usuarioEncontrado = false;
+    function enviarEmail(e) {
+      e.preventDefault();
 
-      // Verifica se o email e senha estão corretos
+      if (email === '') {
+        alert("Preencha todos os campos");
+        return;
+      }
+
+      const templateParams = {
+        from_name: "Sistema De Denúncias Ambientais(SDA)",
+        email: email
+      } 
+
+      emailjs.send("service_iml1d25", "template_0mwosgh", templateParams, "GoePl4RQ7df2u_BFT")
+      .then((response) => {
+        console.log("EMAIL ENVIADO", response.status, response.text);
+      }, (err) => {
+        console.log("ERRO: ", err)
+      })
+    }
+
+
+    function verificarCadastro(e) {
+      e.preventDefault();
+
+      let usuarioEncontrado = false;
+    
       usuarios.forEach((usuario) => {
         if (usuario.email === email && usuario.senha === senha) {
           usuarioEncontrado = true;
+          // Salvar a informação de login no localStorage
+          localStorage.setItem("usuarioLogado", "true");
         }
       });
-  
+    
       if (usuarioEncontrado) {
         alert("Login bem-sucedido!");
         navigate("/Denuncia");
-
       } else {
         alert("Email ou senha incorretos!");
       }
     }
+
+    // function verificarCadastro() {
+    //   let usuarioEncontrado = false;
+
+    //   // Verifica se o email e senha estão corretos
+    //   usuarios.forEach((usuario) => {
+    //     if (usuario.email === email && usuario.senha === senha) {
+    //       usuarioEncontrado = true;
+    //     }
+    //   });
+  
+    //   if (usuarioEncontrado) {
+    //     alert("Login bem-sucedido!");
+    //     navigate("/Denuncia");
+
+    //   } else {
+    //     alert("Email ou senha incorretos!");
+    //   }
+    // }
     
     return <div className="login-container">
     <button className="back-button"><Link to ="/" style={{ textDecoration: "none", color: 'black'}}>← Voltar</Link></button>
@@ -65,12 +109,16 @@ function Login(){
             onChange={(e: any) => setSenha(e.target.value)}
           />
         </div>
-
-    <a href="#" className="forgot-password">Esqueceu sua senha?</a>
+        
+    
 
     <button className="btn login" >LOGIN</button>
     </form>
     <button className="btn register"><Link to ="/cadastro" style={{ textDecoration: "none", color: 'black'}}>Cadastrar</Link></button>
+    <form onSubmit={enviarEmail}>
+    
+    <button style={{ backgroundColor: "black"}}>Esqueceu sua senha?</button>
+    </form>
   </div>
 }
 
