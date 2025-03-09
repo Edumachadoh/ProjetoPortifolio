@@ -4,10 +4,12 @@ import { Link, useLocation } from 'react-router-dom';
 import fotoLogo from "../img/logoHome.jpg";
 import { CategoriaDenuncia } from "../interfaces/CategoriaDenuncia"; 
 import { Denuncia } from '../interfaces/Denuncia';
+import axios from 'axios';
 
-function ListarDenuncia(){
+function EditarDenuncia(){
     
     const [denuncia, setDenuncias] = useState<Denuncia[]>([]);
+    const [status, setStatus] = useState(0);
 
 
     useEffect(() => {
@@ -18,6 +20,8 @@ function ListarDenuncia(){
                 console.table(dados);
             });
     }, []);
+
+
 
     return  <div className="container">
     <aside className="sidebar" >
@@ -67,7 +71,7 @@ function ListarDenuncia(){
     </aside>
 
     <main className="content">
-        <h1 id='denuncia-h1'>Listar Denúncia</h1>
+        <h1 id='denuncia-h1'>Editar Denúncia</h1>
         <table>
             <tr>
                 <th>ID</th>
@@ -79,6 +83,7 @@ function ListarDenuncia(){
                 <th>Categoria denúncia</th>
                 <th>Hora</th>
                 <th>Data</th>
+                <th>Status</th>
             </tr>
 
             {denuncia.map(denuncia => (
@@ -109,6 +114,15 @@ function ListarDenuncia(){
             })
             : "Data inválida"}
     </td>
+    <td><select
+          value={status} // Define o valor padrão
+          onChange={(e: any) => setStatus(Number(e.target.value))}
+        >
+            <option value="1">Não iniciada</option>
+                <option value="2">Em ação</option>
+                <option value="3">Terminada</option>
+                <option value="4">Cancelada</option>
+        </select></td>
     
                 </tr>
             ))}
@@ -117,4 +131,4 @@ function ListarDenuncia(){
 </div>
 }
 
-export default ListarDenuncia;
+export default EditarDenuncia;

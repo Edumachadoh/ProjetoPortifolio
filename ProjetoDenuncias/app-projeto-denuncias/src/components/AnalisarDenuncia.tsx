@@ -152,12 +152,20 @@ function DenunciaAnalisar(){
                 </a>
             </li>
             <li>
+                            <a href="#">
+                                    <Link to="/denuncia-editar" style={{ textDecoration: "none", color: "black" }}>
+                                 Editar Ocorrência
+                                </Link>
+                            </a>
+                        </li>
+            <li>
             <a href="#">
                 <Link to="/denuncia-analisar" style={{ textDecoration: "none", color: "black" }}>
                 Analisar Ocorrência
                 </Link>
                 </a>
             </li>
+            
             <li>
                 <a href="#">
                       <Link to="/contato" style={{ textDecoration: "none", color: "black" }}>
