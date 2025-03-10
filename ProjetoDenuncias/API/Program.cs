@@ -135,6 +135,37 @@ app.MapPost("/api/denuncia/cadastrar", ([FromBody] Denuncia denuncia, [FromServi
     return Results.Created("", denuncia);
 });
 
+//GET: /api/denuncia/buscar/{id}
+app.MapGet("/api/denuncia/buscar/{id}", ([FromRoute] int id,
+    [FromServices] AppDataContext ctx) =>
+{
+    Denuncia? denuncia = ctx.Denuncias.Find(id);
+
+    if (denuncia is null)
+    {
+        return Results.NotFound();
+    }
+    return Results.Ok(denuncia);
+});
+
+app.MapPut("/api/denuncia/alterar/{id}", ([FromRoute] int id,
+    [FromBody] Denuncia denunciaAlterada,
+    [FromServices] AppDataContext ctx) =>
+{
+    Denuncia? denuncia = ctx.Denuncias.Find(id);
+    if (denuncia is null)
+    {
+        return Results.NotFound();
+    }
+
+
+    denuncia.Status = denunciaAlterada.Status;
+    ctx.Denuncias.Update(denuncia);
+    ctx.SaveChanges();
+    return Results.Ok(denuncia);
+});
+
+
 //GET: /api/categoria-denuncia/listar/
 app.MapGet("/api/categoria-denuncia/listar", ([FromServices] AppDataContext ctx) => 
 {

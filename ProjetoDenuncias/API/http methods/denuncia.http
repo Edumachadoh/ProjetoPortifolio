@@ -15,3 +15,6 @@ Content-Type: application/json
   "CategoriaDenunciaId": 3,
   "UsuarioId": 1
 }
+
+### Buscar denuncia
+GET http://localhost:5104/api/denuncia/buscar/1
