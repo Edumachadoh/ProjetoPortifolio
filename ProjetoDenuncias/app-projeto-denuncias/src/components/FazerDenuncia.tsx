@@ -7,6 +7,8 @@ import { Denuncia } from '../interfaces/Denuncia';
 
 function FazerDenuncia(){
     const navigate = useNavigate();
+    const location = useLocation();
+    const usuarioRecebido = location.state?.usuario;
     const [categoriaDenunciaId, setCategoriaDenunciaId] = useState(0);
     const [categoriaDenuncias, setCategoriaDenuncias] = useState<CategoriaDenuncia[]>([]); 
     const [nome, setNome] = useState("");
@@ -16,14 +18,14 @@ function FazerDenuncia(){
     const [descricao, setDescricao] = useState("");
 
 
-    useEffect(() => {
-        const usuarioLogado = localStorage.getItem("usuarioLogado"); // Pega do localStorage
-        console.log("Usuario logado:" + usuarioLogado)
+    // useEffect(() => {
+    //     const usuarioLogado = localStorage.getItem("usuarioLogado"); // Pega do localStorage
+    //     console.log("Usuario logado:" + usuarioLogado)
 
-        if (!usuarioLogado) {
-          navigate("/login"); // Se não estiver logado, redireciona para login
-        }
-      }, []);
+    //     if (!usuarioLogado) {
+    //       navigate("/login"); // Se não estiver logado, redireciona para login
+    //     }
+    //   }, []);
 
     useEffect(() => {
         fetch("http://localhost:5104/api/categoria-denuncia/listar") 
@@ -31,6 +33,7 @@ function FazerDenuncia(){
             .then((dados) => {
                 setCategoriaDenuncias(dados);
                 console.table(dados);
+                console.table(usuarioRecebido);
             });
     }, []);
 
@@ -43,9 +46,9 @@ function FazerDenuncia(){
           rua: rua,
           bairro: bairro,
           cidade: cidade,
-          status: 0,
+          status: 2,
           categoriaDenunciaId: Number(categoriaDenunciaId),
-          usuarioId: 1
+          usuarioId: 0
         };
     
         fetch("http://localhost:5104/api/denuncia/cadastrar", {
@@ -117,6 +120,11 @@ function FazerDenuncia(){
 
     <main className="content">
         <h1 id='denuncia-h1'>Fazer Denúncia</h1>
+        <h2>{usuarioRecebido ? (
+        <p>Bem-vindo, {usuarioRecebido.nome}</p>
+      ) : (
+        <p>Erro ao carregar dados do usuário.</p>
+      )}</h2>
         <form onSubmit={cadastrarDenuncia}>
             <div className="input-group">
                 <label htmlFor="categoria">Categoria da Denúncia</label>

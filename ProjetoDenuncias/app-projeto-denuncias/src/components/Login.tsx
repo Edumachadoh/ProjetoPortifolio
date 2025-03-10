@@ -7,9 +7,12 @@ import emailjs from '@emailjs/browser';
 
 function Login(){
   const [usuarios, setUsuarios] = useState([]);
+  const [usuarioEnviar, setUsuarioEnviar] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const navigate = useNavigate();
+
+  
 
   useEffect(() => {
     // Simulação de uma chamada à API para buscar os usuários cadastrados
@@ -45,18 +48,22 @@ function Login(){
       e.preventDefault();
 
       let usuarioEncontrado = false;
+
+     
     
       usuarios.forEach((usuario) => {
         if (usuario.email === email && usuario.senha === senha) {
           usuarioEncontrado = true;
+          setUsuarioEnviar(usuario);
           // Salvar a informação de login no localStorage
           localStorage.setItem("usuarioLogado", "true");
+          console.log("Usuario: " + usuario.nome)
         }
       });
     
       if (usuarioEncontrado) {
         alert("Login bem-sucedido!");
-        navigate("/Denuncia");
+        navigate("/Denuncia", { state: {usuarios: usuarioEnviar}});
       } else {
         alert("Email ou senha incorretos!");
       }
