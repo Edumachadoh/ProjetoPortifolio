@@ -18,3 +18,12 @@ Content-Type: application/json
 
 ### Buscar denuncia
 GET http://localhost:5104/api/denuncia/buscar/1
+
+### Alterar status denuncia
+PUT http://localhost:5104/api/denuncia/alterar/1
+Content-Type: application/json
+
+{
+  "Status": 2
+}
+
