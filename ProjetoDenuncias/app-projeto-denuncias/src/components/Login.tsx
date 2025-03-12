@@ -10,6 +10,7 @@ function Login(){
   const [usuarioEnviar, setUsuarioEnviar] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [id, setId] = useState("");
   const navigate = useNavigate();
 
   
@@ -54,16 +55,19 @@ function Login(){
       usuarios.forEach((usuario) => {
         if (usuario.email === email && usuario.senha === senha) {
           usuarioEncontrado = true;
+          setId(usuario.id);
           setUsuarioEnviar(usuario);
-          // Salvar a informação de login no localStorage
-          localStorage.setItem("usuarioLogado", "true");
-          console.log("Usuario: " + usuario.nome)
+          console.log("Usuario: " + id)
         }
       });
     
       if (usuarioEncontrado) {
-        alert("Login bem-sucedido!");
-        navigate("/Denuncia", { state: {usuarios: usuarioEnviar}});
+        // alert("Login bem-sucedido!");
+        //  <Link to={`/denuncia/${id}`} className="btn-link">
+                                    
+        //                          </Link>
+        console.log("ID denuncia: " + id);
+        navigate(`/denuncia/${id}`);
       } else {
         alert("Email ou senha incorretos!");
       }

@@ -1,11 +1,12 @@
 import { useEffect ,useState } from 'react';
 import React from "react";
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import fotoLogo from "../img/logoHome.jpg";
 import { CategoriaDenuncia } from "../interfaces/CategoriaDenuncia"; 
 import { Denuncia } from '../interfaces/Denuncia';
 
 function FazerDenuncia(){
+    const { id } = useParams();
     const navigate = useNavigate();
     const location = useLocation();
     const usuarioRecebido = location.state?.usuario;
@@ -18,16 +19,9 @@ function FazerDenuncia(){
     const [descricao, setDescricao] = useState("");
 
 
-    // useEffect(() => {
-    //     const usuarioLogado = localStorage.getItem("usuarioLogado"); // Pega do localStorage
-    //     console.log("Usuario logado:" + usuarioLogado)
-
-    //     if (!usuarioLogado) {
-    //       navigate("/login"); // Se não estiver logado, redireciona para login
-    //     }
-    //   }, []);
 
     useEffect(() => {
+        if (id) {
         fetch("http://localhost:5104/api/categoria-denuncia/listar") 
             .then((resposta) => resposta.json())
             .then((dados) => {
@@ -35,6 +29,7 @@ function FazerDenuncia(){
                 console.table(dados);
                 console.table(usuarioRecebido);
             });
+        }
     }, []);
 
     function cadastrarDenuncia(e: any) {
@@ -120,11 +115,7 @@ function FazerDenuncia(){
 
     <main className="content">
         <h1 id='denuncia-h1'>Fazer Denúncia</h1>
-        <h2>{usuarioRecebido ? (
-        <p>Bem-vindo, {usuarioRecebido.nome}</p>
-      ) : (
-        <p>Erro ao carregar dados do usuário.</p>
-      )}</h2>
+        <h2>Bem vindo, {id}!!!</h2>
         <form onSubmit={cadastrarDenuncia}>
             <div className="input-group">
                 <label htmlFor="categoria">Categoria da Denúncia</label>
